@@ -27,10 +27,6 @@ public class ZooTest {
         Giraffe melman = new Giraffe("Мелман");
         Eagle eddie = new Eagle("Едді");
 
-        // 1. Тестування типової безпеки (Generics)
-        // Компілятор НЕ ДОЗВОЛИТЬ: lionCage.addAnimal(marty); // Marty це Zebra, а не Lion
-        // Компілятор НЕ ДОЗВОЛИТЬ: zebraCage.addAnimal(simba); // Simba це Lion, а не Hoofed
-
         // 2. Тестування додавання
         assertDoesNotThrow(() -> lionCage.addAnimal(simba));
         assertDoesNotThrow(() -> zebraCage.addAnimal(marty));
@@ -64,7 +60,6 @@ public class ZooTest {
         // 6. Тестування вилучення та повторного підрахунку
         assertDoesNotThrow(() -> lionCage.removeAnimal(simba)); // Вилучаємо Сімбу
 
-        // Новий підрахунок: 1 (Lion) + 1 (Zebra) + 1 (Giraffe) + 1 (Eagle) = 4
         assertEquals(4, zoo.getCountOfAnimals(), "Загальна кількість тварин має бути 4 після вилучення");
     }
 }
