@@ -41,6 +41,10 @@ public class BookRepository {
                 .collect(Collectors.toList());
     }
 
+    public void setBooks(Book[] books) {
+        this.books = books;
+    }
+
     public List<Book> getBooksByPublisher(String publisher) {
         return Arrays.stream(books)
                 .filter(book -> book.getPublisher().equalsIgnoreCase(publisher))

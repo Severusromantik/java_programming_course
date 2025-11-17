@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BookView {
+    private Scanner scanner = new Scanner(System.in);
+
     public void displayBooks(Book[] books, String header) {
         System.out.println("\n=========================================================================================================================");
         System.out.println(header);
@@ -30,6 +32,11 @@ public class BookView {
         }
     }
 
+
+    public String getFileNameFromUser() {
+        return getUserInput("Введіть ім'я файлу (наприклад, books.txt): ");
+    }
+
     public void displayMenu() {
         System.out.println("\n--- МЕНЮ ОБРОБКИ МАСИВУ ---");
         System.out.println("1. Отримати список книг зазначеного автора.");
@@ -37,12 +44,14 @@ public class BookView {
         System.out.println("3. Отримати список книг, виданих пізніше вказаного року.");
         System.out.println("4. Відсортувати книги за видавництвами.");
         System.out.println("5. Показати поточний масив.");
+        System.out.println("---------------------------------");
+        System.out.println("6. Зберегти дані у файл");
+        System.out.println("7. Завантажити дані з файлу");
         System.out.println("0. Вихід.");
         System.out.print("Оберіть опцію: ");
     }
 
     public String getUserInput(String prompt) {
-        Scanner scanner = new Scanner(System.in);
         System.out.print(prompt);
         return scanner.nextLine();
     }

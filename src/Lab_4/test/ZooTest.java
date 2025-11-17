@@ -1,5 +1,3 @@
-//package Lab_4.test;
-
 import Lab_4.main.zoo.Zoo;
 import Lab_4.main.zoo.animals.*;
 import Lab_4.main.zoo.cages.*;
