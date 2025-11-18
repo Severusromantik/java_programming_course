@@ -9,32 +9,29 @@ public class CipherReader extends FilterReader {
 
     public CipherReader(Reader in, char keyChar) {
         super(in);
-        this.key = keyChar; // Код ключа, використаний для шифрування
+        this.key = keyChar;
     }
 
-    // Перехоплюємо метод читання одного символу
     @Override
     public int read() throws IOException {
-        int readChar = super.read(); // Читаємо зашифрований символ
+        int readChar = super.read();
 
         if (readChar == -1) {
-            return -1; // Кінець потоку
+            return -1;
         }
 
-        int decryptedChar = readChar - key; // Дешифрування: C_текст = C_новий - C_ключ
-        return decryptedChar; // Повертаємо розшифрований символ
+        int decryptedChar = readChar - key;
+        return decryptedChar;
     }
 
-    // Перехоплюємо метод читання масиву символів
     @Override
     public int read(char[] cbuf, int off, int len) throws IOException {
-        int charsRead = super.read(cbuf, off, len); // Читаємо зашифровані символи у буфер
+        int charsRead = super.read(cbuf, off, len);
 
         if (charsRead == -1) {
-            return -1; // Кінець потоку
+            return -1;
         }
 
-        // Дешифруємо символи безпосередньо у буфері
         for (int i = off; i < off + charsRead; i++) {
             cbuf[i] = (char) (cbuf[i] - key);
         }
